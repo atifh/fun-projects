@@ -1,0 +1,164 @@
+Info file: emacs-w3m-ja.info,    -*-Text-*-
+produced by `texinfo-format-buffer'
+from file `emacs-w3m-ja.texi'
+using `texinfmt.el' version 2.42 of  7 Jul 2006.
+
+INFO-DIR-SECTION GNU Emacs Lisp
+START-INFO-DIR-ENTRY
+* Emacs-w3m-ja: (emacs-w3m-ja).  An Emacs interface to w3m (Japanese)
+END-INFO-DIR-ENTRY
+
+
+This file documents emacs-w3m, an Emacs interface to w3m.
+
+このファイルは Emacs で動く w3m のインタフェースである emacs-w3m に関す
+る説明書です。
+
+Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007
+TSUCHIYA Masatoshi
+
+This edition is for emacs-w3m version 1.4.207.
+
+この版は emacs-w3m バージョン 1.4.207 に対応します。
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU General Public License, Version 2 or any
+later version published by the Free Software Foundation.
+
+この文書を、フリーソフトウェア財団発行の GNU 一般公用使用許諾書第 2 版
+またはそれ以降の版が定める条件の下で複製、配布、あるいは変更することを
+許可します。
+
+This document is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+この文書は有用とは思いますが, 頒布にあたっては, 市場性及び特定目的適合
+性についての暗黙の保証を含めて, いかなる保証も行ないません. 詳細につい
+ては GNU 一般公有使用許諾書をお読みください.
+
+You should have received a copy of the GNU General Public License
+along with this document; if not, you can either send email to this
+document's maintainer or write to: The Free Software Foundation, Inc.;
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+あなたは, この文書と一緒に GNU 一般公有使用許諾の写しを受け取っているは
+ずです. そうでない場合は, 文書の管理者にメールを送るか、または、フリー
+ソフトウェア財団 (51 Franklin Street, Fifth Floor, Boston, MA
+02110-1301, USA.) に手紙を書いてください。
+
+
+
+
+
+Indirect:
+emacs-w3m-ja.info-1: 1640
+emacs-w3m-ja.info-2: 50682
+emacs-w3m-ja.info-3: 101690
+emacs-w3m-ja.info-4: 157027
+emacs-w3m-ja.info-5: 210642
+
+Tag table:
+(Indirect)
+Node: Top1643
+Node: Introduction5137
+Node: Getting Started5774
+Node: Required Emacs Version6419
+Node: You Need w3m7218
+Node: Other Requirements7631
+Node: Installing Emacs-w3m11062
+Node: Non-UNIX-like systems13497
+Node: Minimal Settings14059
+Node: Basic Usage15785
+Node: Browsing Web Pages16338
+Node: Key Binding16900
+Node: Launching and Jumping17925
+Node: Moving in a page21092
+Node: Moving over pages23784
+Node: Browsing With Mouse Operations27217
+Node: Going back to daily hacking and/or daily writing28596
+Node: Inline Images29346
+Node: Tracing History30659
+Node: Managing Bookmarks34020
+Node: Adding Bookmarks34461
+Node: Consulting Bookmarks35419
+Node: Editing Bookmarks35934
+Node: Using Tabs36629
+Node: Working with buffers38947
+Node: Creating and killing buffers39373
+Node: Moving across buffers40091
+Node: Selecting buffers41707
+Node: Downloading43245
+Node: Submitting Forms43956
+Node: HTML File Information45094
+Node: Pretty Good Features46554
+Node: Using Search Engines47162
+Node: The Search Interface48133
+Node: Quick Searching49164
+Node: Adding New Search Engines50685
+Node: Grouping URLs52270
+Node: Weather Information53030
+Node: Using Antenna53193
+Node: Setting up Antenna53665
+Node: Daily web tracking54135
+Node: Showing Directory Tree55077
+Node: Viewing Perl Documents56323
+Node: Using Namazu56501
+Node: Octet57876
+Node: Frame Local Buffers58241
+Node: Customizable Variables59255
+Node: General Variables61261
+Node: Image Variables84750
+Node: Form Variables88792
+Node: Cookie Variables89686
+Node: Bookmark Variables90307
+Node: Search Variables91103
+Node: Weather Variables91274
+Node: Dtree Variables91439
+Node: Antenna Variables91605
+Node: Perldoc Variables91771
+Node: Namazu Variables91942
+Node: Octet Variables92109
+Node: Hooks92262
+Node: Other Variables94049
+Node: Hooking into MUAs96530
+Node: Gnus97328
+Node: Mew100065
+Node: SEMI MUAs101693
+Node: VM103639
+Node: Frequently Asked Questions104123
+Node: General FAQ104413
+Node: Trouble FAQ105769
+Node: Shimbun FAQ112139
+Node: Known Problems112688
+Node: Shimbun Library112847
+Node: Nnshimbun114554
+Node: Mew Shimbun122799
+Node: Shimbun with Wanderlust129774
+Node: Shimbun Sites130092
+Node: Newspapers Supported by Shimbun130519
+Node: News Sites Supported by Shimbun136911
+Node: Mailing Lists Supported by Shimbun144128
+Node: Sport Sites Supported by Shimbun157030
+Node: Misc Sites Supported by Shimbun157775
+Node: Shimbun Basics166375
+Node: Overview166998
+Node: Getting web page and header information169273
+Node: Displaying an article173782
+Node: Inheriting shimbun module175739
+Node: Making text/plain articles177622
+Node: Zenkaku to hankaku conversion179273
+Node: Coding convention of Shimbun179914
+Node: Tips180758
+Node: Mailing List184431
+Node: Emacs-w3m Functions185317
+Node: External Packages185477
+Node: Authors186286
+Node: Index186510
+Node: Concept Index186746
+Node: Key Index191888
+Node: Variable Index199145
+Node: Function Index210645
+
+End tag table
