@@ -8,8 +8,9 @@ import logging
 from eliza import *
 from getpass import getpass
 
-
-logging.basicConfig(filename='/home/atif/tmp/chatter-bot.log',
+# Maitains a log file in which it keeps  
+# information about the user who have interacted with ChatterBot
+logging.basicConfig(filename='chatter-bot.log',
                     level=logging.INFO)
 
 class ChatterBot(object):

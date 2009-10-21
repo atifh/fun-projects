@@ -1,0 +1,4 @@
+ChatterBot -- A jabber client which to your google friends instead of you.
+
+USAGE:: Just run the bot.py file and it will ask for your google username and password.
+        Now your ChatterBot is ready to chat instead of you.
