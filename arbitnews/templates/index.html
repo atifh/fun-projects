@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+  <head>	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Friends Parliament</title>
+    <link href="/stylesheets/main.css" media="screen" rel="Stylesheet" type="text/css">
+    <!-- <link rel="icon" type="image/vnd.microsoft.icon" href=""> -->
+  </head>
+
+  <body class="left75">
+    <div id="wrapper">
+      <div id="content">
+	<div id="content2" class="clearfix">
+	  <div id="left">
+	    <h2>Hello, {{ user }}. Start shouting,  atleast Atif will listen. :)</h2>
+            <ul id="mainNav">
+	      <li>
+	        <a href="#" class="selected" title="Coming soon..">{{ user }}</a>
+	      </li>
+	      <li>
+	        <a href="{{ url }}" title="I will be sad if you leave.">{{ url_linktext }}</a>
+	      </li>
+            </ul>
+	    <form id="commentaryForm" class="clearfix" method="post" action="/sign">
+	      <textarea name="content" id="commentaryMessage"></textarea>
+	      <div id="buttons">
+		<input alt="Commentate" class="formbutton" type="submit" value="Submit"></input>
+              </div>
+	    </form>
+            
+            <div id="added_message"></div>
+            <div id="messages">
+              <ul id="">
+                {% for greeting in greetings %}
+                <li id="" class="clearfix{% if forloop.first %} first{% endif %}" user="">
+                  <div class="commentArea">
+                    <div class="userBox">
+                      <dl>
+                        <dt>
+                          {% if greeting.author %}
+                          <a href="#" title="{{ greeting.author.nickname }}">{{ greeting.author.nickname }}</a>
+                          {% else %}
+                          <a href="#" title="{{ greeting.author.nickname }}">Anonymous</a>
+                          {% endif %}<br />
+                          <span>{{ greeting.date|date }}</span>
+                        </dt>
+                      </dl>
+                    </div>
+                    <p>
+                      <q>{{ greeting.content|urlize }}</q>
+                    </p>
+                    <br />
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+	  </div>
+
+	</div>
+      </div>
+    </div>
+</div>
+<div id="footer">From the cool folks at <a href="http://ocricket.com/">oCricket.com</a>.</div>
+<input type="Hidden" value="True" id="refresh-flag"></input>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.timers.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $(document).everyTime(20000, 'refresh', function() {
+  var refresh_flag=$("#refresh-flag").attr("value")
+  if (refresh_flag=="True") {
+  window.location="/";
+  }
+  });
+  });
+  $("#commentaryMessage").focus(function(){
+  $("#refresh-flag").attr("value", "False")
+  })
+  $("#commentaryMessage").blur(function(){
+  $("#refresh-flag").attr("value", "True")
+  })
+</script>
+</body></html>
