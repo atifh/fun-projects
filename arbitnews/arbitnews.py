@@ -1,3 +1,7 @@
+#! /usr/bin/env python
+## Author : Atif Haider <mail@atifhaider.com>
+## Time-stamp: "2009-06-08 16:58:08 atif"
+
 import cgi
 import os
 from google.appengine.api import users
@@ -26,9 +30,6 @@ class MainPage(webapp.RequestHandler):
 
     url = users.create_logout_url(self.request.uri)
     url_linktext = 'Logout'
-    # else:
-#       url = users.create_login_url(self.request.uri)
-#       url_linktext = 'Login'
 
     template_values = {
       'greetings': greetings,
