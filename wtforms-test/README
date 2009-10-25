@@ -1,6 +1,14 @@
 My brief interaction with WTForms(forms validation and rendering library for python web development) using Tornada web server.
 
 
+NOTE: These are the fields which we can use for validation or else write more if needed.
+['BooleanField', 'DecimalField', 'DateTimeField', 'FieldList', 'FileField',
+'FormField', 'HiddenField', 'IntegerField', 'PasswordField', 'RadioField',
+'SelectField', 'SelectMultipleField', 'SubmitField', 'TextField', 'TextAreaField']
+
+
+
+
 
 
 
