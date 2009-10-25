@@ -2,7 +2,6 @@
 ## Author : Atif Haider <mail@atifhaider.com>
 
 import re
-import pdb
 
 from wtforms import *
 from wtforms.validators import ValidationError
@@ -32,7 +31,7 @@ class RegistrationForm(Form):
     password = PasswordField('Password', [validators.length(min=5, max=25)])
     first_name = TextField(u'First Name', validators=[validators.required()])
     last_name  = TextField(u'Last Name', validators=[validators.optional()])
-    # Custom EmailField need to be written
+    # Custom EmailField written
     email = TextField('Email Address', [is_valid_email])
     birthday = DateTimeField('Your Birthday',  validators=[validators.optional()], format='%m/%d/%y')
 

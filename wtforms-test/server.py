@@ -15,8 +15,8 @@ class RegistrationHandler(tornado.web.RequestHandler):
         self.render("register.html", form=form)
 
     def post(self):
-        # FIXME: Must be a better way?
         data = dict((k,v) for (k, [v]) in self.request.arguments.iteritems())
+        # FIXME - Is this the only way to pass data?
         form = RegistrationForm(**data)
         if form.validate():
             self.write("<h2>Form validates</h2>")
