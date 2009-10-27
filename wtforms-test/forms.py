@@ -33,5 +33,7 @@ class RegistrationForm(Form):
     last_name  = TextField(u'Last Name', validators=[validators.optional()])
     # Custom EmailField written
     email = TextField('Email Address', [is_valid_email])
+    avatar = FileField(u'Image File')
     birthday = DateTimeField('Your Birthday',  validators=[validators.optional()], format='%m/%d/%y')
+
 
