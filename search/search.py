@@ -2,7 +2,7 @@
 ## Author : Atif Haider <mail@atifhaider.com>
 
 import time
-
+import random
 def print_timing(func):
     """A decorator to calculate the time taken by a function
     to execute.
@@ -44,7 +44,7 @@ def search_item2(item, l):
         return item
 
 
-# Tests
+# Test - 2 (search on already sorted list)
 # >>> search_item(9900, range(10000000))
 # search_item took 340.000ms
 # 9900
@@ -52,3 +52,17 @@ def search_item2(item, l):
 # >>> search_item2(9900, range(10000000))
 # search_item2 took 0.000ms
 # 9900
+
+
+# Test-2 (search on unsorted list)
+# >>> lst = range(100000)
+# >>> random.shuffle(lst)
+# >>> search_item(990, range(10000000))
+# search_item took 310.000ms
+# 990
+
+# search_item2(990, range(10000000))
+# search_item2 took 0.000ms
+#  990
+
+
