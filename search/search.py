@@ -3,6 +3,7 @@
 
 import time
 import random
+
 def print_timing(func):
     """A decorator to calculate the time taken by a function
     to execute.
