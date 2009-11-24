@@ -2,7 +2,7 @@
 ## Author : Atif Haider <mail@atifhaider.com>
 
 """
-A python script which notifies(sends a tweet) when there is new 
+A python script which notifies(sends a tweet) when there is a new 
 email in your gmail inbox.
 """
 
@@ -18,7 +18,7 @@ T_PASS = YOUR_ALTERNATE_TWITTER_PASSWORD
 def get_unread_mails(username, password):
     """Returns number of unread mails from google.
     """
-    conn = imaplib.IMAP4_SSL("imap.gmail.com", 993)
+    conn = imaplib.IMAP4_SSL("imap.gmail.com")
     conn.login(username, password)
     unreadCount = re.search("UNSEEN (\d+)", conn.status("INBOX", "(UNSEEN)")[1][0]).group(1)
     conn.logout()
