@@ -10,14 +10,13 @@ import time
 import twitter
 import imaplib, re
 
-
 # You need to have an alternate twitter id which 
-# will tweet you about the mail.
+# will be used to tweet you.
 T_USER = YOUR_ALTERNATE_TWITTER_ID
 T_PASS = YOUR_ALTERNATE_TWITTER_PASSWORD
 
 def get_unread_mails(username, password):
-    """Returns number of unread mails fromm google.
+    """Returns number of unread mails from google.
     """
     conn = imaplib.IMAP4_SSL("imap.gmail.com", 993)
     conn.login(username, password)
@@ -25,11 +24,11 @@ def get_unread_mails(username, password):
     conn.logout()
     return unreadCount
 
-def send_tweet(user, passwd, to):
+def send_tweet(user, passwd, to, num_of_mails):
     """Sends a tweet to the given 'to' user
     """
     t_api = twitter.Api(user, passwd)
-    t_api.PostUpdate("@%s Mail Alert! You have got a new mail." % to)
+    t_api.PostUpdate("@%s Mail Alert! You have %s new mails." % (to, num_of_mails))
 
 def mailalert(username, password):
     """Alerts the user if there is any new mail.
@@ -37,7 +36,7 @@ def mailalert(username, password):
     mails = get_unread_mails(username, password)
     if int(mails) != 0:
         # YOUR_TWITTER_ID: Where you want to be notified.
-        send_tweet(T_USER, T_PASS, YOUR_TWITTER_ID)
+        send_tweet(T_USER, T_PASS, YOUR_TWITTER_ID, mails)
     else:
         print "No new Emails"
     # 1 hour sleep
