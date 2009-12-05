@@ -4,6 +4,7 @@
 
 import cgi
 import os
+import twitter
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext import db
@@ -12,10 +13,11 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 class TweetInfo(db.Model):
-  """A simple class to hold the twitter users information
-  """
+  """A simple class to hold the twitter users information"""
+
   username = db.StringProperty(required=True)
   password = db.StringProperty(required=True)
+  mobile_number = db.IntegerProperty()
   
 class Greeting(db.Model):
   """A simple class to hold the greetings."""
@@ -64,12 +66,15 @@ class Guestbook(webapp.RequestHandler):
 
 class TweetAlert(webapp.RequestHandler):
   def get(self):
-
     subject = "Someone just hit the TweetAlert"
     sender_address = "gmail.com Help <aatif.haider@gmail.com>"
     user_address = "mail@atifhaider.com"
     msisdn = self.request.get("msisdn") 
     content = self.request.get("content") 
+    if msisdn and content:
+      # FIXME: Should map the twitter username using msisdn
+      t_api = twitter.Api(Username, password)
+      t_api.PostUpdate(content)
 
     body = "Phone-Number = %s Message = %s" % (msisdn, content)
     mail.send_mail(sender_address, user_address, subject, body)
