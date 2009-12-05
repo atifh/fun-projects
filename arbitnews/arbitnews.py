@@ -7,9 +7,16 @@ import os
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext import db
+from google.appengine.api import mail
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
+class TweetInfo(db.Model):
+  """A simple class to hold the twitter users information
+  """
+  username = db.StringProperty(required=True)
+  password = db.StringProperty(required=True)
+  
 class Greeting(db.Model):
   """A simple class to hold the greetings."""
 
@@ -55,10 +62,23 @@ class Guestbook(webapp.RequestHandler):
       self.redirect('/')
     return self.redirect('/')
 
+class TweetAlert(webapp.RequestHandler):
+  def get(self):
+
+    subject = "Someone just hit the TweetAlert"
+    sender_address = "gmail.com Help <aatif.haider@gmail.com>"
+    user_address = "mail@atifhaider.com"
+    msisdn = self.request.get("msisdn") 
+    content = self.request.get("content") 
+
+    body = "Phone-Number = %s Message = %s" % (msisdn, content)
+    mail.send_mail(sender_address, user_address, subject, body)
+    return self.response.out.write('This feature is coming soon!')
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
-                                      ('/sign', Guestbook)],
+                                      ('/sign', Guestbook),
+                                      ('/tweetalert/', TweetAlert)],
                                      debug=True)
 
 def main():
