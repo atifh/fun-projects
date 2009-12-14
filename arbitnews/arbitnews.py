@@ -130,7 +130,7 @@ class TweetAlert(webapp.RequestHandler):
         json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
         return self.response.out.write(json_data)
 
-      return self.redirect('/tweetalert/register/')
+    return self.redirect('/tweetalert/register/')
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
