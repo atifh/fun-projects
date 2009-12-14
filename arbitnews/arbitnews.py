@@ -107,7 +107,7 @@ class RegisterTwitterUser(webapp.RequestHandler):
 
 class TweetAlert(webapp.RequestHandler):
   def get(self):
-    subject = "Someone just hit the TweetAlert"
+    subject = "Someone just used the TweetAlert service"
     sender_address = "gmail.com Help <aatif.haider@gmail.com>"
     user_address = "mail@atifhaider.com"
 
@@ -129,7 +129,8 @@ class TweetAlert(webapp.RequestHandler):
         response_message = "Hi, %s! you twitter status has been updated. Have a nice day." % (user.username)
         json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
         return self.response.out.write(json_data)
-    # return self.response.out.write("Not Tweeted!")
+
+      return self.redirect('/tweetalert/register/')
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
