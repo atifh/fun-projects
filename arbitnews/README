@@ -2,3 +2,10 @@ Arbitnews -- A web application for those who wants to shout at me.
              This application is currently deployed using GAE(http://arbitnews.appspot.com)
              
              PS: The abitnews has nothing to do with the news. :)
+
+TweetAlert -- This application is to use your phone to send tweets with *NO* GPRS facitlity.
+              To use this app got to http://arbitnews.appspot.com/tweetalert/register/
+              
+              After completing registration. You can start using this service.
+              Just type Tweet<SPACE>YOUR-MESSAGE and send it to 56767888. Your message will
+              be posted to your twitter timeline.
