@@ -76,7 +76,7 @@ class TweetAlert(webapp.RequestHandler):
                                                                     content,
                                                                     mobile_number)
         mail.send_mail(sender_address, user_address, subject, body)
-        response_message = "Hi, %s! you twitter status has been updated. Have a nice day." % (user.username)
+        response_message = "Hi, %s! your twitter status has been updated. Have a nice day." % (user.username)
         json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
         return self.response.out.write(json_data)
 
