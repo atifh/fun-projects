@@ -45,6 +45,10 @@ def mailalert(username, password):
 
 if __name__ == '__main__':
     from getpass import getpass
-    username = raw_input('Username: ')
-    password = getpass()
-    mailalert(username, password)
+    while True:
+        username = raw_input('Username: ')
+        password = getpass()
+        try:
+            mailalert(username, password)
+        except:
+            print "Authentication failed. Try again!"
