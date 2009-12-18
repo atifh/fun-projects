@@ -65,32 +65,32 @@ class TweetAlert(webapp.RequestHandler):
     mobile_number = self.request.get("msisdn")
     content = self.request.get("content")
 
-    if mobile_number and content:
-      # Twitter
-      query = TweetInfo.all()
-      t_user = query.filter('mobile_number = ', int(mobile_number))
-      t_user = t_user.fetch(1)
-      # user = TweetInfo.get_by_key_name(mobile_number) # user object 
-      if t_user:
-        t_user = t_user[0]
-        send_tweet(t_user.username, t_user.password, content[6:])
-        subject = "%s has used the TweetAlert service" % t_user.username
+    if not (mobile_number and content):
+      return self.redirect('/tweetalert/register/')
 
-      # Facebook
-      query = FacebookInfo.all()
-      fb_user = query.filter('mobile_number = ', int(mobile_number))
-      fb_user = fb_user.fetch(1)
-      if fb_user:
-        fb_user = fb_user[0]
-        browser_obj = authenticate(fb_user.email, fb_user.password)
-        update_fb_status(browser_obj, content[6:])
+    # Twitter
+    query = TweetInfo.all()
+    t_user = query.filter('mobile_number = ', int(mobile_number))
+    t_user = t_user.fetch(1)
+    # user = TweetInfo.get_by_key_name(mobile_number) # user object 
+    if t_user:
+      t_user = t_user[0]
+      send_tweet(t_user.username, t_user.password, content[6:])
+      subject = "%s has used the TweetAlert service" % t_user.username
 
-      body = "%s has sent a tweet(%s) from the mobile num  %s" % (t_user.username,
-                                                                  content,
-                                                                  mobile_number)
-      mail.send_mail(sender_address, user_address, subject, body)
-      response_message = "Hi, %s! your twitter/facebook status has been updated. Have a nice day." % (t_user.username)
-      json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
-      return self.response.out.write(json_data)
+    # Facebook
+    query = FacebookInfo.all()
+    fb_user = query.filter('mobile_number = ', int(mobile_number))
+    fb_user = fb_user.fetch(1)
+    if fb_user:
+      fb_user = fb_user[0]
+      browser_obj = authenticate(fb_user.email, fb_user.password)
+      update_fb_status(browser_obj, content[6:])
 
-    return self.redirect('/tweetalert/register/')
+    body = "%s has sent a tweet(%s) from the mobile num  %s" % (t_user.username,
+                                                                content,
+                                                                mobile_number)
+    mail.send_mail(sender_address, user_address, subject, body)
+    response_message = "Hi, %s! your twitter/facebook status has been updated. Have a nice day." % (t_user.username)
+    json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
+    return self.response.out.write(json_data)
