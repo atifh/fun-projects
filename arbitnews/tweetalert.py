@@ -10,6 +10,8 @@ from google.appengine.api import mail
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
+from facebook import FacebookInfo, authenticate, update_fb_status
+
 class TweetInfo(db.Model):
   """A simple class to hold the twitter users information"""
 
@@ -35,7 +37,7 @@ def save_tweet_info_obj(username, password, mobile):
 class RegisterTwitterUser(webapp.RequestHandler):
   def get(self):
     path = os.path.join(os.path.dirname('templates/'), 'register.html')
-    self.response.out.write(template.render(path, {}))
+    self.response.out.write(template.render(path, {'type': 'Twitter'}))
 
   def post(self):
     username = self.request.get("username")
@@ -57,7 +59,6 @@ class RegisterTwitterUser(webapp.RequestHandler):
 
 class TweetAlert(webapp.RequestHandler):
   def get(self):
-    subject = "Someone just used the TweetAlert service"
     sender_address = "gmail.com Help <aatif.haider@gmail.com>"
     user_address = "mail@atifhaider.com"
 
@@ -65,19 +66,31 @@ class TweetAlert(webapp.RequestHandler):
     content = self.request.get("content")
 
     if mobile_number and content:
+      # Twitter
       query = TweetInfo.all()
-      user = query.filter('mobile_number = ', int(mobile_number))
-      user = user.fetch(1)
+      t_user = query.filter('mobile_number = ', int(mobile_number))
+      t_user = t_user.fetch(1)
       # user = TweetInfo.get_by_key_name(mobile_number) # user object 
-      if user:
-        user = user[0]
-        send_tweet(user.username, user.password, content[6:])
-        body = "%s has sent a tweet(%s) from the mobile num  %s" % (user.username,
-                                                                    content,
-                                                                    mobile_number)
-        mail.send_mail(sender_address, user_address, subject, body)
-        response_message = "Hi, %s! your twitter status has been updated. Have a nice day." % (user.username)
-        json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
-        return self.response.out.write(json_data)
+      if t_user:
+        t_user = t_user[0]
+        send_tweet(t_user.username, t_user.password, content[6:])
+        subject = "%s has used the TweetAlert service" % t_user.username
+
+      # Facebook
+      query = FacebookInfo.all()
+      fb_user = query.filter('mobile_number = ', int(mobile_number))
+      fb_user = fb_user.fetch(1)
+      if fb_user:
+        fb_user = fb_user[0]
+        browser_obj = authenticate(fb_user.email, fb_user.password)
+        update_fb_status(browser_obj, content[6:])
+
+      body = "%s has sent a tweet(%s) from the mobile num  %s" % (t_user.username,
+                                                                  content,
+                                                                  mobile_number)
+      mail.send_mail(sender_address, user_address, subject, body)
+      response_message = "Hi, %s! your twitter/facebook status has been updated. Have a nice day." % (t_user.username)
+      json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
+      return self.response.out.write(json_data)
 
     return self.redirect('/tweetalert/register/')

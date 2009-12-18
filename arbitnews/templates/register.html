@@ -4,10 +4,10 @@
     <link href="/stylesheets/register.css" media="screen" rel="Stylesheet" type="text/css">
   </head>
   <body>
-    <h2>Enter you Twitter credentials</h2> 
+    <h2>Enter you {{ type }} credentials</h2> 
     <form action="" method="post"> 
-      <p><label for="username" type="text">Twitter Username</label>&nbsp;<input name="username" type="text"/></p> 
-      <p><label for="passowrd" type="password">Twitter Password</label>&nbsp;<input name="password" type="password"/></p> 
+      <p><label for="username" type="text">{{ type }} Username</label>&nbsp;<input name="username" type="text"/></p> 
+      <p><label for="passowrd" type="password">{{ type }} Password</label>&nbsp;<input name="password" type="password"/></p> 
       <p><label for="mobile">Mobile Number</label>&nbsp;<input name="mobile" type="text"/>
       <span class="info">* For eg. 919000201000</span></p>
       <input type="submit" value="Submit" /> 

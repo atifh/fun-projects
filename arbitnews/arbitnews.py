@@ -9,8 +9,10 @@ from google.appengine.api import mail
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
-from tweetalert import RegisterTwitterUser, TweetAlert
 from google.appengine.ext.webapp.util import run_wsgi_app
+
+from facebook import RegisterFacebookUser
+from tweetalert import RegisterTwitterUser, TweetAlert
 
 class Greeting(db.Model):
   """A simple class to hold the greetings."""
@@ -62,7 +64,8 @@ application = webapp.WSGIApplication(
                                      [('/', MainPage),
                                       ('/sign', Friendsbook),
                                       ('/tweetalert/', TweetAlert),
-                                      ('/tweetalert/register/', RegisterTwitterUser)],
+                                      ('/tweetalert/register/', RegisterTwitterUser),
+                                      ('/tweetalert/register/facebook/', RegisterFacebookUser)],
                                      debug=True)
 
 def main():
