@@ -10,7 +10,7 @@ from google.appengine.api import mail
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
-from facebook import FacebookInfo, update_fb_status
+# from facebook import FacebookInfo, update_fb_status
 
 class TweetInfo(db.Model):
   """A simple class to hold the twitter users information"""
