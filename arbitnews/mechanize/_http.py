@@ -41,7 +41,7 @@ DEFAULT_ENCODING = 'latin-1'
 
 try:
     socket._fileobject("fake socket", close=True)
-except TypeError:
+except :
     # python <= 2.4
     create_readline_wrapper = socket._fileobject
 else:
