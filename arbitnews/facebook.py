@@ -9,30 +9,26 @@ from google.appengine.ext.webapp import template
 
 from mechanize import Browser
 
-
 # API_KEY = '2338efee7656a7906224421771903d11'
 # SECRET_KEY = '0efe5b27e215dbad59eb1ea732891c51'
 
 class FacebookInfo(db.Model):
   """A simple class to hold the facebook users information"""
 
-  email = db.StringProperty()
+  email = db.EmailProperty()
   password = db.StringProperty()
   mobile_number = db.IntegerProperty()
 
-def authenticate(email, password):
-    """Authenticates facebook user."""
-    br = Browser()
-    br.open( "http://lite.facebook.com/" )
-    br.select_form(nr=0)
-    br.form['email'] = email
-    br.form['password'] = password
-    br.submit()
-    return br
-
-def update_fb_status(browser_obj, message):
+def update_fb_status(email, password, message):
     """Takes the message and update facebook status.
     """
+    browser_obj = Browser()
+    browser_obj.open( "http://lite.facebook.com/" )
+    browser_obj.select_form(nr=0)
+    browser_obj.form['email'] = email
+    browser_obj.form['password'] = password
+    browser_obj.submit()
+    # Update status
     browser_obj.select_form(nr=1)
     browser_obj.form['message'] = message
     browser_obj.submit()
