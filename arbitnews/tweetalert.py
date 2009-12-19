@@ -94,9 +94,8 @@ class TweetAlert(webapp.RequestHandler):
     #   mail.send_mail(sender_address, user_address, subject, body)
     #   update_fb_status(fb_user.email, fb_user.password, content)
 
-    if t_user:
-      response_message = "Hi, %s! your twitter/facebook status has been updated. Have a nice day." % (t_user[0].username)
+      response_message = "Hi, %s! your twitter/facebook status has been updated. Have a nice day." % (t_user.username)
     else:
-      response_message = "Hi, there!It seems you are not registered with us! logon to http://arbitnews.appspot.com/tweetalert/."
+      response_message = "Hi, there! you are not registered with us! Logon to www.arbitnews.appspot.com/tweetalert/"
     json_data = simplejson.dumps([{"msisdn": mobile_number, "content": response_message}])
     return self.response.out.write(json_data)
