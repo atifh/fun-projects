@@ -17,10 +17,10 @@ class ChatterBot(object):
     """A simple class for testing jabber bot
     """
 
-    JABBER_SERVER = "talk.google.com"
-    CLIENT = "gmail.com"
+    JABBER_SERVER = "jabber.org"
+    CLIENT = "jabber.org"
     JABBER_PORT = 5223
-    JABBER_RESOURCE = "Google"
+    JABBER_RESOURCE = "Jabber"
 
     def __init__(self, username, password):
         """
