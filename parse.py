@@ -26,8 +26,7 @@ class ParseAPI(object):
             json_payload = json.dumps(payload)
             response = requests.post(url, data=json_payload,\
                                          headers=self.headers)
-        print response.status_code
-        return json.loads(response.content)
+        return response.status_code
 
     def job_application(self, name, email, about, urls):
         """Method to apply for a job at Parse.com
@@ -50,5 +49,5 @@ if __name__ == '__main__':
     about = """All my life i have been a Backend Developer. The code mostly i wrote is in Lisp, Clojure, Python. System Architecture, Database Design, Rest API always excites me even in the midnight. Why Parse? Yeah, i never liked dealing with templates. I like building kickass, fast, scalable backend system and expose it as API to the rest of the world and this makes me super confident that Parse will be a good fit for me and vice versa. :)"""
     urls = ['http://atifhaider.com/', 'http://github.com/atifh',
             'http://aatif.emurse.com/', 'http://launchyard.com/',
-            'http://twitter.com/aatifh']
+            'http://twitter.com/aatifh', 'https://github.com/atifh/fun-projects/blob/master/parse.py']
     parse_obj.job_application(name, email, about, urls)
